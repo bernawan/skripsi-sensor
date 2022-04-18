@@ -16,6 +16,10 @@
                 </div>
             </div>
             <br><br>
+            <p>Set Threshold:</p>
+            <input id="myInput" type="text">
+            <button onclick="myFunction()">input</button>
+            <br><br>
             <p id="p1">Status Treshold: </p>
         </div>
     </div>
@@ -92,20 +96,33 @@
             config.data.labels.push(data.time);
             config.data.datasets[0].data.push(data.value_suhu);
             config.data.datasets[1].data.push(data.value_kelembapan);
-            if(data.value_suhu >= 27.00) {
-                console.log("Alert!");
-                document.getElementById("p1").innerHTML = "Status Treshold: Alert! Suhu Tinggi!";
-                //window.alert("Alert! Suhu Tinggi!");
-            } else {
-                console.log("Aman");
-                document.getElementById("p1").innerHTML = "Status Treshold : Aman!";
-            }
+
+            // if(data.value_suhu >= 27.00) {
+            //     console.log("Alert!");
+            //     document.getElementById("p1").innerHTML = "Status Treshold: Alert! Suhu Tinggi!";
+            //     //window.alert("Alert! Suhu Tinggi!");
+            // } else {
+            //     console.log("Aman");
+            //     document.getElementById("p1").innerHTML = "Status Treshold : Aman!";
+            // }
 
             lineChart.update();
 
         }
 
     });
+
+    function myFunction() {
+                var letter = document.getElementById("myInput").value;
+                var text;
+
+                if (letter <= 20) {
+                    document.getElementById("p1").innerHTML = "Status Treshold: Alert! Suhu Tinggi!";
+                    
+                } else {
+                    document.getElementById("p1").innerHTML = "Status Treshold : Aman!";
+                }
+            }
 
 </script>
 </body>
